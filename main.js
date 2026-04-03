@@ -36,23 +36,91 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Lead Form Handling with Modern UI Feedback
-    const leadForm = document.querySelector('.lead-form');
+    // 4. Lead Form Handling with Google Sheets Integration
+    const leadForm = document.getElementById('leadForm');
     if (leadForm) {
-        leadForm.addEventListener('submit', (e) => {
+        const messageEl = document.getElementById('leadFormMessage');
+
+        const setFormMessage = (message, type) => {
+            if (!messageEl) return;
+            messageEl.textContent = message;
+            messageEl.classList.remove('success', 'error');
+            if (type) {
+                messageEl.classList.add(type);
+            }
+        };
+
+        leadForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = leadForm.querySelector('button');
             const originalText = btn.innerText;
+            const endpoint = (leadForm.dataset.sheetEndpoint || '').trim();
+            const formData = new FormData(leadForm);
+            const isSpreadsheetUrl = /docs\.google\.com\/spreadsheets\//i.test(endpoint);
+            const isAppsScriptUrl = /^https:\/\/script\.google\.com\/macros\/s\/.+\/(exec|dev)(\?.*)?$/i.test(endpoint);
+
+            if (formData.get('website')) {
+                return;
+            }
+
+            if (!endpoint) {
+                setFormMessage('Form is not configured yet. Please add your Google Sheets endpoint.', 'error');
+                return;
+            }
+
+            if (isSpreadsheetUrl || !isAppsScriptUrl) {
+                setFormMessage('Invalid endpoint. Use Apps Script Web App URL ending with /exec (or /dev for testing), not the sheet URL.', 'error');
+                return;
+            }
+
             btn.innerText = 'PROCESSING...';
             btn.disabled = true;
+            setFormMessage('Submitting your details...', '');
 
-            // Simulate API Call
-            setTimeout(() => {
-                alert('Success! Our luxury consultant will reach out to you shortly.');
+            const payload = {
+                fullName: String(formData.get('fullName') || '').trim(),
+                phone: String(formData.get('phone') || '').trim(),
+                email: String(formData.get('email') || '').trim(),
+                source: 'Century Kindle Website',
+                submittedAt: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                let result = {};
+                const responseText = await response.text();
+                if (responseText) {
+                    try {
+                        result = JSON.parse(responseText);
+                    } catch (_) {
+                        result = {};
+                    }
+                }
+
+                if (!response.ok || (result.status && result.status !== 'success')) {
+                    throw new Error(result.message || 'Unable to submit form.');
+                }
+
+                setFormMessage('Thank you! Your request has been received. Our team will contact you shortly.', 'success');
+                leadForm.reset();
+            } catch (error) {
+                const errMsg = error && error.message ? error.message : '';
+                if (/Failed to fetch/i.test(errMsg)) {
+                    setFormMessage('Could not reach endpoint. Check Apps Script deployment access is set to Anyone.', 'error');
+                } else {
+                    setFormMessage(errMsg || 'Submission failed. Please try again.', 'error');
+                }
+            } finally {
                 btn.innerText = originalText;
                 btn.disabled = false;
-                leadForm.reset();
-            }, 1500);
+            }
         });
     }
 

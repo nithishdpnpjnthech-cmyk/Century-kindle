@@ -266,17 +266,37 @@ section {
     overflow: hidden;
 }
 
-.hero-bg {
+.hero-carousel {
     position: absolute;
     inset: 0;
     z-index: -1;
+    overflow: hidden;
+    width: 100%;
 }
 
-.hero-bg img {
-    width: 100%;
+.carousel-track {
+    display: flex;
+    width: 600%; /* For 6 images */
+    height: 100%;
+    animation: slideBanners 30s infinite;
+}
+
+.carousel-track img {
+    width: calc(100% / 6);
     height: 100%;
     object-fit: cover;
     filter: brightness(0.9);
+    flex-shrink: 0;
+}
+
+@keyframes slideBanners {
+    0%, 12% { transform: translateX(0); }
+    16.66%, 28.66% { transform: translateX(calc(-100% / 6 * 1)); }
+    33.33%, 45.33% { transform: translateX(calc(-100% / 6 * 2)); }
+    50%, 62% { transform: translateX(calc(-100% / 6 * 3)); }
+    66.66%, 78.66% { transform: translateX(calc(-100% / 6 * 4)); }
+    83.33%, 95.33% { transform: translateX(calc(-100% / 6 * 5)); }
+    100% { transform: translateX(0); }
 }
 
 .hero-overlay {
@@ -401,6 +421,35 @@ section {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 4px rgba(197, 160, 89, 0.1);
+}
+
+.lead-form .btn-premium:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.lead-form-message {
+    min-height: 1.2rem;
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.lead-form-message.success {
+    color: #0a7d2f;
+}
+
+.lead-form-message.error {
+    color: #a91d22;
+}
+
+.honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Responsive */

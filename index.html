@@ -44,8 +44,16 @@
 <main>
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-bg">
-            <img src="assets/media/hero.png" alt="Century Kindle Luxury Apartments">
+        <div class="hero-carousel">
+            <div class="carousel-track">
+                <!-- Add your 6 banner images here -->
+                <img src="assets/media/banner/banner1.webp" alt="Banner 1">
+                <img src="assets/media/banner/banner2.jpg" alt="Banner 2">
+                <img src="assets/media/banner/banner4.webp" alt="Banner 3">
+                <img src="assets/media/banner/banner1.webp" alt="Banner 4">
+                <img src="assets/media/banner/banner2.jpg" alt="Banner 5">
+                <img src="assets/media/banner/banner4.webp" alt="Banner 6">
+            </div>
             <div class="hero-overlay"></div>
         </div>
         <div class="hero-content">
@@ -172,11 +180,13 @@
             <h2 class="section-title" style="font-size: 2.5rem;">Pre-Register Now</h2>
             <p class="text-center" style="margin-bottom: 30px; color: var(--text-muted);">Leave your details below and our luxury consultants will contact you shortly.</p>
             
-            <form class="lead-form" style="display: flex; flex-direction: column; gap: 20px;">
-                <input type="text" placeholder="Full Name" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <input type="email" placeholder="Email Address" required>
+            <form id="leadForm" class="lead-form" data-sheet-endpoint="" style="display: flex; flex-direction: column; gap: 20px;">
+                <input type="text" name="fullName" placeholder="Full Name" autocomplete="name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" required>
+                <input type="email" name="email" placeholder="Email Address" autocomplete="email" required>
+                <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                 <button type="submit" class="btn-premium" style="margin-top: 10px;">Submit Expression of Interest</button>
+                <p id="leadFormMessage" class="lead-form-message" aria-live="polite"></p>
             </form>
         </div>
     </section>
