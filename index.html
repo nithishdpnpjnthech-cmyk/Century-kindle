@@ -61,7 +61,7 @@
             <p style="color: var(--text-main); font-weight: 600;">Luxury Living Near Attur Lake</p>
             <div class="btn-group">
                 <a href="#contact" class="btn-premium">Book Site Visit</a>
-                <a href="#floor-plans" class="btn-premium btn-outline" style="margin-left: 20px;">View Floor Plans</a>
+                <a href="#floor-plans" class="btn-premium btn-outline">View Floor Plans</a>
             </div>
         </div>
     </section>
@@ -69,7 +69,7 @@
     <!-- Highlights Section -->
     <section class="highlights" id="overview">
         <h2 class="section-title">Project Highlights</h2>
-        <div class="row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
+        <div class="highlights-grid">
             <div class="glass-card text-center">
                 <div style="font-size: 2rem; margin-bottom: 20px;">🏙️</div>
                 <h3 style="color: var(--primary); margin-bottom: 10px;">Premium Apartments</h3>
@@ -92,7 +92,7 @@
     <section id="pricing">
         <h2 class="section-title">Exclusive Pricing</h2>
         <p class="section-subtitle">Transparent pricing for an investment that lasts a lifetime.</p>
-        <div class="glass-card" style="padding: 0; overflow: hidden;">
+        <div class="glass-card table-responsive" style="padding: 0;">
             <table class="price-table" style="width: 100%; border-collapse: collapse;">
                 <thead style="background: var(--bg-surface);">
                     <tr>
@@ -143,28 +143,28 @@
     <section id="amenities">
         <h2 class="section-title">World-Class Amenities</h2>
         <div class="amenities-grid">
-            <div class="glass-card text-center" style="padding: 50px 40px;">
+            <div class="glass-card text-center amenity-card">
                 <div class="amenity-icon-wrapper">
                     <img src="assets/media/amenities/gym.webp" alt="Modern Gym" class="amenity-img">
                 </div>
                 <h4 style="color: var(--primary); margin-top: 20px; font-size: 1.2rem;">Modern Gym</h4>
                 <p style="font-size: 0.95rem; color: var(--text-muted);">Fully equipped fitness center for your wellness.</p>
             </div>
-            <div class="glass-card text-center" style="padding: 50px 40px;">
+            <div class="glass-card text-center amenity-card">
                 <div class="amenity-icon-wrapper">
                     <img src="assets/media/amenities/Swimming-Pool.webp" alt="Swimming Pool" class="amenity-img">
                 </div>
                 <h4 style="color: var(--primary); margin-top: 20px; font-size: 1.2rem;">Swimming Pool</h4>
                 <p style="font-size: 0.95rem; color: var(--text-muted);">Temperature controlled infinity pool with deck.</p>
             </div>
-            <div class="glass-card text-center" style="padding: 50px 40px;">
+            <div class="glass-card text-center amenity-card">
                 <div class="amenity-icon-wrapper">
-                    <img src="assets/media/amenities/security.jpg" alt="Ample Parking" class="amenity-img">
+                    <img src="assets/media/amenities/security.jpg" alt="24/7 Security" class="amenity-img">
                 </div>
                 <h4 style="color: var(--primary); margin-top: 20px; font-size: 1.2rem;">24/7 Security</h4>
                 <p style="font-size: 0.95rem; color: var(--text-muted);">Multi-tier security system and gated community.</p>
             </div>
-            <div class="glass-card text-center" style="padding: 50px 40px;">
+            <div class="glass-card text-center amenity-card">
                 <div class="amenity-icon-wrapper">
                     <img src="assets/media/amenities/parking.webp" alt="Ample Parking" class="amenity-img">
                 </div>
@@ -176,7 +176,7 @@
 
     <!-- Lead Form Section -->
     <section id="contact">
-        <div class="glass-card" style="max-width: 600px; margin: 0 auto; padding: 50px;">
+        <div class="glass-card contact-card">
             <h2 class="section-title" style="font-size: 2.5rem;">Pre-Register Now</h2>
             <p class="text-center" style="margin-bottom: 30px; color: var(--text-muted);">Leave your details below and our luxury consultants will contact you shortly.</p>
             
@@ -197,7 +197,7 @@
     <i class="fab fa-whatsapp"></i>
 </a>
 
-<footer style="background: var(--bg-surface); padding: 60px 5% 20px; text-align: center; border-top: 1px solid var(--glass-border);">
+<footer class="site-footer">
     <p style="font-size: 0.8rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 30px;">
         <strong>Disclaimer:</strong> The content provided on this website is for information purposes only and does not constitute an offer to avail any service. The prices mentioned are subject to change without notice and properties are subject to availability.
     </p>
