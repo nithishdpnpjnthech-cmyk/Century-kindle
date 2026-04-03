@@ -178,17 +178,25 @@ section {
     border: none;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     cursor: pointer;
     transition: var(--transition);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.btn-sm {
+    padding: 10px 20px;
+    font-size: 0.85rem;
 }
 
 .btn-premium:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 120, 142, 0.3);
 }
 
 .btn-outline {
@@ -199,7 +207,7 @@ section {
 
 .btn-outline:hover {
     background: var(--primary);
-    color: var(--secondary);
+    color: var(--white);
 }
 
 /* Navbar */
