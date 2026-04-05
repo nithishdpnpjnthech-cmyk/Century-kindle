@@ -789,9 +789,9 @@
         <span style="font-weight: bold; font-size: 12px;"> </span>
 
         <hr />
-        <p class="text-center">© Copyright 2026 &nbsp;|&nbsp;<a href='/century/privacy-policy' target='_blank'>Privacy Policy</a>&nbsp;|&nbsp;<a href='https://www.attur-yelahanka.com/century/terms-and-conditions' target='_blank'>Terms & Conditions</a>&nbsp;|&nbsp;
+        <p class="text-center">© Copyright 2026 &nbsp;|&nbsp;<a href='/privacy-policy' target='_blank'>Privacy Policy</a>&nbsp;|&nbsp;<a href='/terms-and-conditions' target='_blank'>Terms & Conditions</a>&nbsp;|&nbsp;
             <a
-                href='https://www.attur-yelahanka.com/century/disclaimer' target='_blank'>Disclaimer</a>
+                href='/disclaimer' target='_blank'>Disclaimer</a>
         </p>
     </footer>
 
@@ -805,8 +805,8 @@
     <input type="hidden" name="lead_method" value="2" id="lead_method">
     <input type="hidden" name="refer_url" id="refer_url" value="">
     <input type="hidden" name="lead_origin" id="lead_origin" value="mobile">
-    <input type="hidden" name="request_url" id="request_url" value="https://www.attur-yelahanka.com/century?gad_campaignid=23578567650">
-    <input type="hidden" name="domain_url" id="domain_url" value="https://www.attur-yelahanka.com">
+    <input type="hidden" name="request_url" id="request_url" value="">
+    <input type="hidden" name="domain_url" id="domain_url" value="">
     <input type="hidden" name="browser" id="browser" value="Mozilla/5.0 (Linux; Android 13; SM-G981B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36">
     <input type="hidden" name="ga_event_tracking_code" id="ga_event_tracking_code" value="">
 
@@ -862,23 +862,11 @@
             }
 
             const payload = new URLSearchParams();
-            payload.append('name', name);
+            payload.append('fullName', name);
+            payload.append('phone', '+' + countryCode + mobile);
             payload.append('email', email);
-            payload.append('mobile', mobile);
-            payload.append('country_code', countryCode);
-            payload.append('full_mobile', '+' + countryCode + mobile);
-            payload.append('enquiry', (enquiryLabel || '').replace(/^>/, ''));
-            payload.append('lead_source', (document.getElementById('lead_source') || {}).value || '');
-            payload.append('mic_id', (document.getElementById('mic_id') || {}).value || '');
-            payload.append('property_id', (document.getElementById('property_id') || {}).value || '');
-            payload.append('city_id', (document.getElementById('city_id') || {}).value || '');
-            payload.append('lead_method', (document.getElementById('lead_method') || {}).value || '');
-            payload.append('request_url', (document.getElementById('request_url') || {}).value || window.location.href);
-            payload.append('domain_url', (document.getElementById('domain_url') || {}).value || window.location.origin);
-            payload.append('refer_url', (document.getElementById('refer_url') || {}).value || document.referrer || '');
-            payload.append('lead_origin', (document.getElementById('lead_origin') || {}).value || 'web');
-            payload.append('browser', navigator.userAgent || '');
-            payload.append('created_at', new Date().toISOString());
+            payload.append('source', (enquiryLabel || '').replace(/^>/, ''));
+            payload.append('submittedAt', new Date().toISOString());
 
             try {
                 await fetch(endpoint, {
