@@ -40,67 +40,6 @@
             --colorBtn: #ffffff
         }
 
-        /* Fallback icon mapping in case micon webfont is unavailable */
-        .mi {
-            font-family: "Segoe UI Symbol", "Arial Unicode MS", Arial, sans-serif !important;
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        .mi-home:before {
-            content: "\2302" !important;
-        }
-
-        .mi-price:before,
-        .mi-rs:before,
-        .mi-rs-light:before,
-        .mi-support-price:before {
-            content: "\20B9" !important;
-        }
-
-        .mi-siteplan:before {
-            content: "\1F5FA" !important;
-        }
-
-        .mi-sitevisit:before,
-        .mi-location:before,
-        .mi-loc-list:before,
-        .mi-loc-list-2:before,
-        .mi-support-visit:before {
-            content: "\1F4CD" !important;
-        }
-
-        .mi-download:before {
-            content: "\2B07" !important;
-        }
-
-        .mi-gallery:before {
-            content: "\1F5BC" !important;
-        }
-
-        .mi-call:before,
-        .mi-support-call:before {
-            content: "\260E" !important;
-        }
-
-        .mi-enquire:before {
-            content: "\2709" !important;
-        }
-
-        .mi-ami:before {
-            content: "\2605" !important;
-        }
-
-        .mi-whatsapp:before {
-            content: "\1F4AC" !important;
-        }
-
-        .mi-whatsapp .path1:before,
-        .mi-whatsapp .path2:before,
-        .mi-whatsapp .path3:before {
-            content: "" !important;
-        }
-
         #loader {
             width: 100vw;
             height: 100vh;
@@ -454,7 +393,7 @@
                  <div class="carousel-item" data-interval="3000">
                     <picture>
                         <source class="lazyload d-block micro-main-slider-img" media="(max-width: 750px)" data-srcset="assets/media/microsite_banners/banner1.jpg" type="image/jpeg">
-                        <source class="lazyload d-block micro-main-slider-img" media="(min-width: 751px)" data-srcset="assets/media/microsite_banners/banner1.jpg" type="image/jpeg">
+                        <source class="lazyload d-block micro-main-slider-img" media="(min-width: 751px)" data-srcset="assets/media/microsite_banners/banner3.webp" type="image/jpeg">
                         <img src="assets/media/microsite_banners/banner1.jpg" data-sizes="auto" class="lazyload d-block micro-main-slider-img" data-srcset="assets/media/microsite_banners/banner2.jpg 750w,assets/media/microsite_banners/banner2.jpg">
                     </picture>
                 </div>
@@ -737,7 +676,7 @@
 
 
             <div id="suc_fm_msg_1">
-                <form id="leadForm" class="form-side lead-form" data-sheet-endpoint="https://script.google.com/macros/s/AKfycbwjX0tFMJenZmZc8RNljwoxJ-Eiy3STcl-wn_OaW_UbuLBWDbPJ_MMxsuwBKqHrbuo0KA/exec">
+                <form id="leadForm" class="form-side lead-form" data-sheet-endpoint="https://script.google.com/macros/s/AKfycby721TxtIo87cymnP9O8lvunb_J6Wwxx_kfhlWm64rsC9DKPGw-hC7BXzylH72ztXHjRA/exec">
                     <div class="form-group">
                         <input type="text" pattern="[a-zA-Z ]+" class="form-control rounded-0 micro-form-field" placeholder="Name" name="user_name_1" id="user_name_1" required>
                         <span id="user_name_1_error"></span>
@@ -783,7 +722,7 @@
 
 
                                 <div id="suc_fm_msg_12">
-                                    <form id="leadFormModal" class="form-modal lead-form" data-sheet-endpoint="https://script.google.com/macros/s/AKfycbwjX0tFMJenZmZc8RNljwoxJ-Eiy3STcl-wn_OaW_UbuLBWDbPJ_MMxsuwBKqHrbuo0KA/exec">
+                                    <form id="leadFormModal" class="form-modal lead-form" data-sheet-endpoint="https://script.google.com/macros/s/AKfycby721TxtIo87cymnP9O8lvunb_J6Wwxx_kfhlWm64rsC9DKPGw-hC7BXzylH72ztXHjRA/exec">
                                         <div class="form-group">
                                             <input type="text" pattern="[a-zA-Z ]+" class="form-control rounded-0 micro-form-field" required placeholder="Name" name="user_name_12" id="user_name_12">
                                             <span id="user_name_12_error"></span>
@@ -891,46 +830,38 @@
             iframe.src = iframeSrc;
         });
 
-        function set_country_code(code) {
-            var hiddenCountryCode = document.getElementById('hidden_country_code');
-            if (hiddenCountryCode) {
-                hiddenCountryCode.value = code;
-            }
-        }
-
         async function complete_enquiry_form_with_thanks(nameId, emailId, mobileId, successContainerId, enquiryLabel) {
-            var nameEl = document.getElementById(nameId);
-            var emailEl = document.getElementById(emailId);
-            var mobileEl = document.getElementById(mobileId);
-            var successContainer = document.getElementById(successContainerId);
+            const nameEl = document.getElementById(nameId);
+            const emailEl = document.getElementById(emailId);
+            const mobileEl = document.getElementById(mobileId);
+            const successContainer = document.getElementById(successContainerId);
 
             if (!nameEl || !emailEl || !mobileEl || !successContainer) {
+                alert('Form is not ready.');
                 return false;
             }
 
-            var form = nameEl.closest('form');
-            var endpoint = form && form.dataset ? form.dataset.sheetEndpoint : '';
+            const form = nameEl.closest('form');
+            const endpoint = (form && form.dataset && form.dataset.sheetEndpoint) ||
+                (document.getElementById('leadForm') && document.getElementById('leadForm').dataset.sheetEndpoint) || '';
+
             if (!endpoint) {
-                var mainForm = document.getElementById('leadForm');
-                endpoint = mainForm && mainForm.dataset ? mainForm.dataset.sheetEndpoint : '';
-            }
-            if (!endpoint) {
-                alert('Form endpoint is missing.');
+                alert('Google form endpoint is missing.');
                 return false;
             }
 
-            var name = nameEl.value.trim();
-            var email = emailEl.value.trim();
-            var mobile = mobileEl.value.replace(/\D/g, '');
-            var countrySelect = form ? form.querySelector("select[id='country_code']") : null;
-            var countryCode = countrySelect ? countrySelect.value : (document.getElementById('hidden_country_code') ? document.getElementById('hidden_country_code').value : '91');
+            const name = nameEl.value.trim();
+            const email = emailEl.value.trim();
+            const mobile = mobileEl.value.replace(/\D/g, '');
+            const countryCodeSelect = form ? form.querySelector("select[id='country_code']") : null;
+            const countryCode = countryCodeSelect ? countryCodeSelect.value : '91';
 
             if (!name || !email || mobile.length < 10) {
-                alert('Please fill name, valid email and valid mobile number.');
+                alert('Please fill valid Name, Email and Mobile Number.');
                 return false;
             }
 
-            var payload = new URLSearchParams();
+            const payload = new URLSearchParams();
             payload.append('name', name);
             payload.append('email', email);
             payload.append('mobile', mobile);
@@ -957,11 +888,9 @@
                 });
 
                 successContainer.innerHTML = '<div class="alert alert-success mt-2 mb-0">Thank you. Your details have been submitted successfully.</div>';
-                if (form) {
-                    form.reset();
-                }
-            } catch (err) {
-                alert('Submission failed. Please try again.');
+                if (form) form.reset();
+            } catch (error) {
+                successContainer.innerHTML = '<div class="alert alert-danger mt-2 mb-0">Submission failed. Please try again.</div>';
             }
 
             return false;

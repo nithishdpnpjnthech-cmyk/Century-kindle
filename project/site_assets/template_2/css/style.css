@@ -7789,6 +7789,8 @@ body {
     }
     .modal-highlight-bg {
         background-color: #f9f9f9;
+        min-width: 120px;
+        padding: 0 .6vw;
         border-top-right-radius: 10px;
         border-bottom-right-radius: 10px
     }
@@ -7806,18 +7808,28 @@ body {
     .modal-highlight {
         list-style: none;
         padding: 1vw 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .2vw;
         margin-bottom: 0
+    }
+    .modal-highlight li {
+        text-align: center;
+        line-height: 1.2
     }
     .modal-highlight li i {
         display: inline-block;
-        font-size: 3.3vw;
+        font-size: 2.2vw;
+        line-height: 1;
+        width: 1.2em;
         color: var(--main-text-color)
     }
     .modal-highlight li span {
         display: block;
         font-size: 1vw;
         color: var(--main-text-color);
-        padding: 0 0 .6vw
+        padding: .1vw 0 .45vw
     }
     .modal-call-btn,
     .modal-call-btn:hover {
