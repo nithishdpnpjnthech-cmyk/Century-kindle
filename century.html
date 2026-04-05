@@ -272,14 +272,15 @@
     <style>
         @media only screen and (min-width: 992px) {
             .info-box {
-                width: 27vw;
+                width: 20vw;
+                max-width: 340px;
                 top: 8px;
                 left: 10px;
                 background-color: #fff;
                 color: #000;
                 text-align: center;
                 border-radius: 8px;
-                padding: 0 10px;
+                padding: 0 8px;
                 font-weight: 400;
             }
             .pro-status {
@@ -303,22 +304,42 @@
                 font-weight: 400;
             }
             .pro-title {
-                padding: .5vw .8vw .3vw;
+                padding: .35vw .6vw .2vw;
+                font-size: 1.4vw;
+                line-height: 1.55vw;
             }
             .pro-title,
             .pro-add,
             .pro-price {
                 font-weight: 700;
             }
+            .pro-add,
+            .pro-dev {
+                font-size: .95vw;
+                line-height: 1.2vw;
+            }
             ul.pro-spec {
                 background-color: transparent;
                 margin-bottom: 0;
+                font-size: .88vw;
+                padding: .45vw .55vw;
+                margin-top: .45vw;
             }
             .info-box span.list-icon {
                 display: none;
             }
+            .offer {
+                padding: 6px;
+                font-size: 11px;
+            }
+            .pro-price {
+                font-size: 1.8vw;
+                line-height: 2vw;
+                padding: .2vw .6vw .3vw;
+            }
             .pro-rera {
-                font-size: .8vw;
+                font-size: .68vw;
+                line-height: 1.05vw;
             }
         }
 
@@ -347,6 +368,174 @@
             -webkit-animation: Gradient 3s ease infinite;
             -moz-animation: Gradient 3s ease infinite;
             animation: Gradient 3s ease infinite;
+        }
+
+        .hero-banner-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            text-align: center;
+            width: min(95%, 980px);
+            padding: 0 12px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .hero-banner-content {
+                left: 50%;
+                width: min(42vw, 700px);
+            }
+        }
+
+        @media only screen and (min-width: 1200px) {
+            .hero-banner-content {
+                left: 50%;
+                width: min(40vw, 680px);
+            }
+        }
+
+        @media only screen and (max-width: 991px) {
+            .hero-banner-content {
+                top: 54%;
+                left: 50%;
+                width: min(96%, 700px);
+                padding: 0 10px;
+            }
+
+            .hero-title {
+                font-size: clamp(34px, 8vw, 64px);
+                margin-bottom: 8px;
+            }
+
+            .hero-tagline {
+                font-size: clamp(18px, 4.4vw, 34px);
+                margin-bottom: 16px;
+            }
+
+            .hero-cta {
+                min-width: 180px;
+                min-height: 48px;
+                font-size: 15px;
+                padding: 9px 16px;
+            }
+
+            .hero-cta-group {
+                gap: 10px;
+            }
+        }
+
+        .hero-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(44px, 9vw, 100px);
+            font-weight: 700;
+            letter-spacing: .2px;
+            line-height: .98;
+            color: #0f1319;
+            margin-bottom: 18px;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+            white-space: nowrap;
+        }
+
+        .hero-tagline {
+            font-size: clamp(20px, 2.5vw, 44px);
+            font-weight: 700;
+            color: #181c22;
+            margin-bottom: 30px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            .hero-title {
+                font-size: clamp(38px, 5.5vw, 72px);
+                margin-bottom: 8px;
+            }
+
+            .hero-tagline {
+                font-size: clamp(28px, 3.6vw, 48px);
+                margin-bottom: 12px;
+            }
+
+            .hero-cta {
+                min-width: 120px;
+                min-height: 34px;
+                font-size: 12px;
+                padding: 6px 12px;
+                border-width: 1.5px;
+            }
+
+            .hero-cta-group {
+                gap: 10px;
+            }
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 22px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta {
+            min-width: 230px;
+            min-height: 62px;
+            border-radius: 999px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: .4px;
+            text-transform: uppercase;
+            padding: 12px 34px;
+            transition: all .25s ease;
+        }
+
+        .hero-cta-primary {
+            background: #0698b2;
+            border: 2px solid #0698b2;
+            color: #ffffff;
+        }
+
+        .hero-cta-primary:hover,
+        .hero-cta-primary:focus {
+            color: #ffffff;
+            background: #0489a0;
+            border-color: #0489a0;
+        }
+
+        .hero-cta-secondary {
+            background: rgba(255, 255, 255, .55);
+            border: 2px solid #05839a;
+            color: #05839a;
+        }
+
+        .hero-cta-secondary:hover,
+        .hero-cta-secondary:focus {
+            background: rgba(255, 255, 255, .8);
+            color: #046f83;
+            border-color: #046f83;
+        }
+
+        @media only screen and (max-width: 767px) {
+            .hero-banner-content {
+                top: 56%;
+            }
+
+            .hero-title {
+                margin-bottom: 10px;
+            }
+
+            .hero-tagline {
+                margin-bottom: 18px;
+            }
+
+            .hero-cta {
+                min-width: 165px;
+                min-height: 44px;
+                font-size: 14px;
+                padding: 8px 14px;
+            }
+
+            .hero-cta-group {
+                gap: 12px;
+            }
         }
     </style>
     <header class="micro-nav fixed-top pload">
@@ -417,6 +606,14 @@
                         <source class="lazyload d-block micro-main-slider-img" media="(min-width: 751px)" data-srcset="assets/media/microsite_banners/banner2.jpg" type="image/jpeg">
                         <img src="assets/media/microsite_banners/banner2.jpg" data-sizes="auto" class="lazyload d-block micro-main-slider-img" data-srcset="assets/media/microsite_banners/banner2.jpg 750w,assets/media/microsite_banners/banner2.jpg">
                     </picture>
+                </div>
+            </div>
+            <div class="hero-banner-content">
+                <h1 class="hero-title">Century Kindle</h1>
+                <p class="hero-tagline">Luxury Living Near Attur Lake</p>
+                <div class="hero-cta-group">
+                    <a href="#" class="btn hero-cta hero-cta-primary enqModal" data-form="lg" data-title="Organize Site Visit" data-btn="Request Site Visit" data-enquiry="Organize Site Visit" data-toggle="modal" data-target="#enqModal">Book Site Visit</a>
+                    <a href="#sitefloorplan" class="btn hero-cta hero-cta-secondary">View Floor Plans</a>
                 </div>
             </div>
             <a class="carousel-control-prev" href="#home" role="button" data-slide="prev">
@@ -780,7 +977,7 @@
             <li>Project Registered under Government of India RERA Act 2016</li>
             <li>Marketed by&nbsp;AOC Leasing LLP</li>
             <li>
-                RERA Project Registration No :PRM/KA/RERA/1251/309/PR/200326/008542/span>
+                RERA Project Registration No :PRM/KA/RERA/1251/309/PR/200326/008542
             </li>
             <li><b>Site Address</b> : Attur, Yelahanka, North Bangalore</li>
         </ul>
@@ -795,7 +992,7 @@
         </p>
     </footer>
 
-    <input type="hidden" name="xidfkfkfasdikfakfak" id="xidfkfkfasdikfakfak" value="ZmFzSWxmc2xkb2ZAa2Zkc0BrZnNhZEBma2FzZEtLbCNLS2tra2thcnRoaWsua3VuY2hpQGFkZHJlc3NvZmNob2ljZS5jb21AQEAqODhAZmFrZHNrQGtmZHNhazk5MzgzODgwMDI4MjhLaw==">
+    <!-- <input type="hidden" name="xidfkfkfasdikfakfak" id="xidfkfkfasdikfakfak" value="ZmFzSWxmc2xkb2ZAa2Zkc0BrZnNhZEBma2FzZEtLbCNLS2tra2thcnRoaWsua3VuY2hpQGFkZHJlc3NvZmNob2ljZS5jb21AQEAqODhAZmFrZHNrQGtmZHNhazk5MzgzODgwMDI4MjhLaw==">
     <input type="hidden" name='country_code' id="hidden_country_code" value="91">
     <input type="hidden" name="template" value="microsite_ppc" id="template">
     <input type="hidden" name="lead_source" value="2" id="lead_source">
@@ -808,7 +1005,7 @@
     <input type="hidden" name="request_url" id="request_url" value="">
     <input type="hidden" name="domain_url" id="domain_url" value="">
     <input type="hidden" name="browser" id="browser" value="Mozilla/5.0 (Linux; Android 13; SM-G981B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Mobile Safari/537.36">
-    <input type="hidden" name="ga_event_tracking_code" id="ga_event_tracking_code" value="">
+    <input type="hidden" name="ga_event_tracking_code" id="ga_event_tracking_code" value=""> -->
 
     <script src="site_assets/template_2/js/app.js"></script>
     <script>

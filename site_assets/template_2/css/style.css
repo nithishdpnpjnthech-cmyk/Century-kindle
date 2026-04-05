@@ -7872,9 +7872,17 @@ body {
         border-bottom: 1px solid #ededed
     }
     .info-box {
+        position: static;
+        top: auto;
+        left: auto;
+        z-index: auto;
+        margin: 8px auto 10px;
+        border-radius: 10px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .14);
         padding-bottom: .5vw;
         display: block;
-        width: 100%;
+        width: calc(100% - 16px);
+        max-width: 520px;
         background-color: #fff;
         color: #000;
         text-align: center
@@ -7890,11 +7898,11 @@ body {
     }
     .pro-title {
         display: block;
-        padding: 3px;
-        font-size: 24px;
-        line-height: 24px;
+        padding: 4px 8px;
+        font-size: 18px;
+        line-height: 22px;
         font-weight: 600;
-        margin: 5px 0;
+        margin: 4px 0;
         color: var(--main-text-color);
         text-shadow: 0 1px 1px #000;
         text-transform: uppercase
@@ -7902,17 +7910,17 @@ body {
     .pro-add,
     .pro-dev {
         display: block;
-        padding: 3px 0;
-        font-size: 15px;
+        padding: 2px 0;
+        font-size: 14px;
         text-transform: capitalize;
-        line-height: 16px
+        line-height: 18px
     }
     ul.pro-spec {
         background-color: #f1f1f1;
-        padding: 5px 8px;
+        padding: 4px 8px;
         margin-top: 3px;
         margin-bottom: 5px;
-        font-size: 15px;
+        font-size: 14px;
         text-align: left;
         text-transform: capitalize;
         list-style: none
@@ -7944,8 +7952,12 @@ body {
     .pro-rera {
         display: block;
         padding: 3px 0;
-        font-size: 13px;
+        font-size: 12px;
         margin-top: 3px
+    }
+    .offer {
+        padding: 6px;
+        font-size: 12px
     }
     .mob-form {
         padding: 5px 10px;
@@ -8203,6 +8215,34 @@ body {
         color: var(--colorBtn);
         padding: 5px 0;
         text-decoration: none
+    }
+}
+
+@media only screen and (max-width:576px) {
+    .info-box {
+        width: calc(100% - 12px);
+        margin: 6px auto 8px;
+        border-radius: 8px
+    }
+    .pro-title {
+        font-size: 15px;
+        line-height: 18px;
+        margin: 2px 0
+    }
+    .pro-add,
+    .pro-dev,
+    ul.pro-spec {
+        font-size: 13px;
+        line-height: 16px
+    }
+    .pro-price {
+        font-size: 18px
+    }
+    .pro-rera {
+        font-size: 11px
+    }
+    .info-box .offer:nth-of-type(n+5) {
+        display: none
     }
 }
 
