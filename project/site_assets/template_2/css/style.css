@@ -7680,13 +7680,17 @@ body {
         transform: translate(-50%, -50%)
     }
     .vsv-text-bg {
-        display: block;
+        display: inline-block;
         background-color: rgba(0, 0, 0, .5);
         color: #fff;
         text-shadow: 0 1px 2px #000;
         text-align: center;
         font-size: 1.8vw;
         padding: 1vw 0;
+        min-width: 46%;
+        max-width: 85%;
+        margin: 0 auto;
+        border-radius: .5vw;
         -webkit-transition: all .3s ease-in-out;
         -moz-transition: all .3s ease-in-out;
         -ms-transition: all .3s ease-in-out;
