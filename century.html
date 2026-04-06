@@ -18,6 +18,9 @@
     <link rel="dns-prefetch" href="http://zopim.com/" crossorigin>
     <link rel="dns-prefetch" href="http://ipinfo.io/" crossorigin>
     <link rel="dns-prefetch" href="http://cdn.jsdelivr.net/" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="site_assets/template_2/css/style.css">
 
     <!-- Google tag (gtag.js) -->
@@ -370,15 +373,33 @@
             animation: Gradient 3s ease infinite;
         }
 
+        #home {
+            position: relative;
+        }
+
+        #home::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: linear-gradient(110deg, rgba(4, 19, 46, .62) 0%, rgba(6, 30, 71, .45) 38%, rgba(8, 39, 86, .18) 100%);
+        }
+
         .hero-banner-content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 4;
+            z-index: 5;
             text-align: center;
             width: min(95%, 980px);
-            padding: 0 12px;
+            padding: 16px 20px;
+            border-radius: 20px;
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
         }
 
         @media only screen and (min-width: 992px) {
@@ -426,22 +447,24 @@
         }
 
         .hero-title {
-            font-family: Georgia, "Times New Roman", serif;
+            font-family: "Merriweather", Georgia, "Times New Roman", serif;
             font-size: clamp(44px, 9vw, 100px);
-            font-weight: 700;
-            letter-spacing: .2px;
+            font-weight: 900;
+            letter-spacing: .3px;
             line-height: .98;
-            color: #0f1319;
+            color: #f3f8ff;
             margin-bottom: 18px;
-            text-shadow: 0 1px 0 rgba(255, 255, 255, .35);
+            text-shadow: 0 3px 14px rgba(1, 11, 30, .75);
             white-space: nowrap;
         }
 
         .hero-tagline {
+            font-family: "Manrope", "Segoe UI", Tahoma, sans-serif;
             font-size: clamp(20px, 2.5vw, 44px);
-            font-weight: 700;
-            color: #181c22;
+            font-weight: 800;
+            color: #d7e7ff;
             margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(3, 15, 40, .7);
         }
 
         @media only screen and (min-width: 992px) {
@@ -476,41 +499,47 @@
         }
 
         .hero-cta {
+            font-family: "Manrope", "Segoe UI", Tahoma, sans-serif;
             min-width: 230px;
             min-height: 62px;
             border-radius: 999px;
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 22px;
+            font-weight: 800;
             letter-spacing: .4px;
             text-transform: uppercase;
             padding: 12px 34px;
-            transition: all .25s ease;
+            transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease;
+            box-shadow: 0 12px 24px rgba(2, 23, 59, .28);
         }
 
         .hero-cta-primary {
-            background: #0698b2;
-            border: 2px solid #0698b2;
+            background: linear-gradient(135deg, #0a3e86, #052a5f);
+            border: 2px solid #052a5f;
             color: #ffffff;
         }
 
         .hero-cta-primary:hover,
         .hero-cta-primary:focus {
             color: #ffffff;
-            background: #0489a0;
-            border-color: #0489a0;
+            background: linear-gradient(135deg, #0d4d9f, #08326f);
+            border-color: #08326f;
+            transform: translateY(-2px);
+            box-shadow: 0 16px 28px rgba(2, 24, 64, .38);
         }
 
         .hero-cta-secondary {
-            background: rgba(255, 255, 255, .55);
-            border: 2px solid #05839a;
-            color: #05839a;
+            background: rgba(255, 255, 255, .83);
+            border: 2px solid #0a3f86;
+            color: #07346f;
         }
 
         .hero-cta-secondary:hover,
         .hero-cta-secondary:focus {
-            background: rgba(255, 255, 255, .8);
-            color: #046f83;
-            border-color: #046f83;
+            background: #ffffff;
+            color: #052a5f;
+            border-color: #052a5f;
+            transform: translateY(-2px);
+            box-shadow: 0 16px 28px rgba(4, 33, 76, .24);
         }
 
         @media only screen and (max-width: 767px) {
